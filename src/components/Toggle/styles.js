@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
 export const Label = styled.label`
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-right: 20px;
   float: right;
 `;
 

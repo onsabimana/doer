@@ -1,16 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from 'components/App';
+import { Provider } from 'react-redux';
+import configureStore from 'store';
 import GlobalStyles from 'styles/globals';
 
 import * as serviceWorker from './serviceWorker';
 
 const renderApp = () => {
+  const initialState = {};
+  const store = configureStore(initialState);
+
+  store.dispatch({ type: '@doer/@@INIT' })
+
   ReactDOM.render(
-    <React.Fragment>
+    <Provider store={store}>
       <GlobalStyles />
       <App />
-    </React.Fragment>,
+    </Provider>,
     document.getElementById('root')
   )
 };

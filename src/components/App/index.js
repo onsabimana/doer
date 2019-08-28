@@ -1,27 +1,14 @@
-import React from 'react';
+import { connect } from 'react-redux';
 
-import List from 'components/List';
-import Toggle from 'components/Toggle';
+import actions from 'store/app/actions';
+import App from './App';
 
-import { Wrapper } from './styles';
+const mapStateToProps = state => ({
+  theme: state.app.theme,
+});
 
-const items = [
-  {id: 1, item: 'Buy Milk'},
-  {id: 2, item: 'Return Books'},
-  {id: 3, item: 'Gym'},
-];
+const mapDispatchToProps = dispatch => ({
+  setTheme: ({ theme }) => dispatch(actions.setTheme({ theme })),
+});
 
-function App() {
-
-  return (
-    <Wrapper>
-      <Toggle
-        onChange={() => console.log('Toggled')}
-        checked={false}
-      />
-      <List items={items}/>
-    </Wrapper>
-  );
-}
-
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
