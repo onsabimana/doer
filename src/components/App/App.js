@@ -1,29 +1,39 @@
 import React, { Component }from 'react';
 import { ThemeProvider } from 'styled-components';
-import { colorsDark } from 'styles/palette';
+import { colorsDark, colorsLight} from 'styles/palette';
 
 import List from 'components/List';
-import Toggle from 'components/Toggle';
-
+import ToggleSwitch from 'components/ToggleSwitch';
 import { Wrapper } from './styles';
 
 const items = [
   { id: 1, item: 'Buy Milk' },
   { id: 2, item: 'Return Books' },
   { id: 3, item: 'Gym' },
+  { id: 4, item: 'Read a Book'},
 ];
 
 class App extends Component {
 
+  toggleTheme = (event) => {
+    const { setTheme } = this.props;
+
+    const checked = event.target.checked;
+    const theme = checked? 'light' : 'dark';
+
+    setTheme({theme: theme});
+  }
+
   render() {
+    const { theme } = this.props;
+
     return (
-      <ThemeProvider theme={colorsDark}>
+      <ThemeProvider theme={theme === 'dark' ? colorsDark: colorsLight}>
         <div>
+          <div>
+            <ToggleSwitch onChange={this.toggleTheme}/>
+          </div>
           <Wrapper>
-            <Toggle
-              onChange={() => console.log('Toggled')}
-              checked={false}
-            />
             <List items={items} />
           </Wrapper>
         </div>

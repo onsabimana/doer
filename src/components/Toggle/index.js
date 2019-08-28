@@ -3,7 +3,7 @@ import Switch from 'react-switch';
 
 import { Label } from './styles';
 
-const Toggle = ({ onChange, checked }) => {
+const Toggle = ({ onChange, offColor, onColor }) => {
   return (
     <Label>
       <Switch
@@ -11,6 +11,10 @@ const Toggle = ({ onChange, checked }) => {
         checked={false}
         uncheckedIcon={false}
         checkedIcon={false}
+        onColor={onColor}
+        offColor={offColor}
+        offHandleColor={onColor}
+        onHandleColor={offColor}
       />
     </Label>
   );
