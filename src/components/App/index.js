@@ -1,24 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+
+import List from 'components/List';
+import Toggle from 'components/Toggle';
+
+import { Wrapper } from './styles';
+
+const items = [
+  {id: 1, item: 'Buy Milk'},
+  {id: 2, item: 'Return Books'},
+  {id: 3, item: 'Gym'},
+];
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/components/index.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Wrapper>
+      <Toggle
+        onChange={() => console.log('Toggled')}
+        checked={false}
+      />
+      <List items={items}/>
+    </Wrapper>
   );
 }
 

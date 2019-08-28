@@ -1,3 +1,16 @@
+
+# The Ultimate TODO List
+
+## Features
+
+- Strikethrough and move to the bottom
+- Switch between dark and light mode
+- High light items by age (red older than x days etc ...)
+- Important and urgent features (future improvement)
+- Auth
+- Access via multiple devices
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
