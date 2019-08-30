@@ -4,16 +4,20 @@ import { colorsDark, colorsLight} from 'styles/palette';
 
 import List from 'components/List';
 import ToggleSwitch from 'components/ToggleSwitch';
-import { Wrapper } from './styles';
+import { Title, Wrapper } from './styles';
 
 const items = [
-  { id: 1, item: 'Buy Milk' },
-  { id: 2, item: 'Return Books' },
-  { id: 3, item: 'Gym' },
-  { id: 4, item: 'Read a Book'},
+  { id: 1, item: 'Buy Milk', checked: false},
+  { id: 2, item: 'Return Books', checked: false},
+  { id: 3, item: 'Gym', checked: false},
+  { id: 4, item: 'Read a Book', checked: false},
 ];
 
 class App extends Component {
+
+  componentDidMount = () => {
+    this.props.loadTodos({ todos: items });
+  }
 
   toggleTheme = (event) => {
     const { setTheme } = this.props;
@@ -25,16 +29,15 @@ class App extends Component {
   }
 
   render() {
-    const { theme } = this.props;
+    const { theme, todos, updateTodo} = this.props;
 
     return (
       <ThemeProvider theme={theme === 'dark' ? colorsDark: colorsLight}>
         <div>
-          <div>
-            <ToggleSwitch onChange={this.toggleTheme}/>
-          </div>
           <Wrapper>
-            <List items={items} />
+            <Title>My Todo List </Title>
+            <ToggleSwitch onChange={this.toggleTheme} />
+            <List items={todos} updateTodo={updateTodo}/>
           </Wrapper>
         </div>
       </ThemeProvider>

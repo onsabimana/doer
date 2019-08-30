@@ -3,15 +3,16 @@ import styled from 'styled-components';
 import { colorsDark, colorsLight} from 'styles/palette';
 
 export const Label = styled.label`
-  background-color: ${colorsDark.background}
+  background-color: ${({ theme }) => theme.background}
   position: relative;
-  display: flex;
+  display: inline-block;
   width: 60px;
   height: 34px;
   margin-left: 10px;
   margin-right: 20px;
   float: right;
-  margin-bottom: 10px;
+  margin-top: 24px;
+  margin-bottom: 26px;
 
   input {
     opacity: 0;
